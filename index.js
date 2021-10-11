@@ -50,7 +50,6 @@ const cbscreen = (() => {
     }
 
     return {
-        supported,
         identifyBrowser,
         isCompatibleWith,
         ScreenShare,
