@@ -12,7 +12,7 @@ const cbscreen = (() => {
         return browsersStreams.hasOwnProperty(browser);
     }
     let browsersFunctions = {
-        Firefox() {
+        async Firefox() {
             let captureStream = null;
             try {
                 captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
