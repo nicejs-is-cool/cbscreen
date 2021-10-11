@@ -53,6 +53,6 @@ const cbscreen = (() => {
         identifyBrowser,
         isCompatibleWith,
         ScreenShare,
-        browsersStreams
+        browsersFunctions
     }
 })();
