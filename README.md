@@ -7,7 +7,7 @@ cbscreen is a cross-browser screenshare library
     <title>Example</title>
 </head>
 <body>
-    <script src="./cbscreen.js"></script>
+    <script src="https://unpkg.com/cbscreen@latest/index.js"></script>
     <script>
         let screen = new cbscreen.ScreenShare();
         screen
