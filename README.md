@@ -20,3 +20,8 @@ cbscreen is a cross-browser screenshare library
     </script>
 </body>
 ```
+### Compatibility
+- [x] Chrome
+- [ ] Firefox (Not tested)
+- [ ] Opera (Not tested)
+- [ ] Safari (Not tested)
