@@ -1,5 +1,4 @@
 const cbscreen = (() => {
-    let supported = [];
     function identifyBrowser() {
         if(navigator.userAgent.includes("Opera") || navigator.userAgent.includes('OPR')) return 'Opera';
         if(navigator.userAgent.includes("Chrome")) return 'Chrome';
@@ -12,7 +11,7 @@ const cbscreen = (() => {
         return browsersStreams.hasOwnProperty(browser);
     }
     let browsersFunctions = {
-        async Firefox() {
+        async Chrome() {
             let captureStream = null;
             try {
                 captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
@@ -22,10 +21,12 @@ const cbscreen = (() => {
             return captureStream;
         }
     }
+    browsersFunctions.Firefox = browsersFunctions.Chrome;
     class ScreenShare {
         constructor() {
             this.video = false;
             this.audio = false;
+            this.stream = null;
         }
         enableVideo() {
             this.video = true;
@@ -35,13 +36,16 @@ const cbscreen = (() => {
             this.audio = true;
             return this;
         }
-        start() {
+        async start() {
             let browser = identifyBrowser();
             if (!isCompatibleWith(browser)) throw 'not compatible';
-            return browsersFunctions[browser]({
+            let stream = await browsersFunctions[browser]({
                 video: this.video,
                 audio: this.audio
             });
+            this.stream = stream;
+
+            return this.stream;
         }
     }
 
