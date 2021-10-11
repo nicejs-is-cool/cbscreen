@@ -8,16 +8,12 @@ const cbscreen = (() => {
         return 'Unknown';
     }
     function isCompatibleWith(browser) {
-        return browsersStreams.hasOwnProperty(browser);
+        return browsersFunctions.hasOwnProperty(browser);
     }
     let browsersFunctions = {
-        async Chrome() {
-            let captureStream = null;
-            try {
-                captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-            } catch(err) {
-                console.error("Error: " + err);
-            }
+        async Chrome(displayMediaOptions) {
+            let captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+            
             return captureStream;
         }
     }
