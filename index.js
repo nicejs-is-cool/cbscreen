@@ -23,6 +23,7 @@ const cbscreen = (() => {
             this.video = false;
             this.audio = false;
             this.stream = null;
+            this.forcedBrowser = null;
         }
         enableVideo() {
             this.video = true;
@@ -32,8 +33,18 @@ const cbscreen = (() => {
             this.audio = true;
             return this;
         }
+        /**
+         * Forces cbscreen to use another browser's function.  
+         * Example: `<ScreenShare>.forceBrowser('Firefox');`
+         * @param {string} browser 
+         * @returns {ScreenShare} self
+         */
+        forceBrowser(browser) {
+            this.forcedBrowser = browser;
+            return this;
+        }
         async start() {
-            let browser = identifyBrowser();
+            let browser = this.forcedBrowser || identifyBrowser();
             if (!isCompatibleWith(browser)) throw 'not compatible';
             let stream = await browsersFunctions[browser]({
                 video: this.video,
