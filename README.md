@@ -22,6 +22,6 @@ cbscreen is a cross-browser screenshare library
 ```
 ### Compatibility
 - [x] Chrome
-- [ ] Firefox (Not tested)
-- [ ] Opera (Not tested)
+- [x] Firefox (Not tested, but should work)
+- [x] Opera (Should work as it uses chromium)
 - [ ] Safari (Not tested)
