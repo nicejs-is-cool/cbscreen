@@ -10,14 +10,36 @@ const cbscreen = (() => {
     function isCompatibleWith(browser) {
         return browsersFunctions.hasOwnProperty(browser);
     }
+    function isCompatibleWithTheCurrentBrowser() {
+        return isCompatibleWith(identifyBrowser());
+    }
     let browsersFunctions = {
         async Chrome(displayMediaOptions) {
             let captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
             
             return captureStream;
+        },
+        async Safari(displayMediaOptions) {
+            let captureStream = await navigator.mediaDevices.getUserMedia(displayMediaOptions);
+            
+            return captureStream;
+        },
+        async IE(displayMediaOptions) {
+            let captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+            
+            return captureStream;
+        },
+        async Firefox(displayMediaOptions) {
+            let captureStream = await navigator.mediaDevices.getUserMedia(displayMediaOptions);
+            
+            return captureStream;
+        },
+        async Opera(displayMediaOptions) {
+            let captureStream = await navigator.mediaDevices.getUserMedia(displayMediaOptions);
+            
+            return captureStream;
         }
     }
-    browsersFunctions.Firefox = browsersFunctions.Chrome;
     class ScreenShare {
         constructor() {
             this.video = false;
